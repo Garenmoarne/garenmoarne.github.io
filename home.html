@@ -101,7 +101,11 @@
         @keyframes glitch {
             0% {
                 transform: translate(0);
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);;
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            20% {
+                transform: translate(-5px, 5px);
+                clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
             }
             40% {
                 transform: translate(5px, -5px);
@@ -110,6 +114,10 @@
             60% {
                 transform: translate(-5px);
                 clip-path: polygon(0 2%, 100% 0, 100% 98%, 0 100%);
+            }
+            80% {
+                transform: translate(5px);
+                clip-path: polygon(0 0, 100% 2%, 100% 100%, 0 98%);
             }
             100% {
                 transform: translate(0);
