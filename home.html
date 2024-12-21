@@ -22,7 +22,12 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: #000;
+                background: rgba(
+                    0,
+                    0,
+                    0,
+                    0.7
+                ); /* Changed from #000 to semi-transparent */
                 pointer-events: none;
                 z-index: 999;
                 mix-blend-mode: overlay;
@@ -38,13 +43,17 @@
                 right: 0;
                 background: linear-gradient(
                         rgba(18, 16, 16, 0) 50%,
-                        rgba(0, 0, 0, 0.25) 50%
+                        rgba(0, 0, 0, 0.4) 50%
+                            /* Increased opacity from 0.25 to 0.4 */
                     ),
                     linear-gradient(
                         90deg,
-                        rgba(255, 0, 0, 0.06),
-                        rgba(0, 255, 0, 0.02),
-                        rgba(0, 0, 255, 0.06)
+                        rgba(255, 0, 0, 0.1),
+                        /* Increased opacity from 0.06 to 0.1 */
+                            rgba(0, 255, 0, 0.05),
+                        /* Increased opacity from 0.02 to 0.05 */
+                            rgba(0, 0, 255, 0.1)
+                            /* Increased opacity from 0.06 to 0.1 */
                     );
                 z-index: 2;
                 background-size:
@@ -243,7 +252,8 @@
                 }
             }
             @keyframes flicker {
-                0%, 100% {
+                0%,
+                100% {
                     opacity: 1;
                 }
                 50% {
@@ -288,6 +298,7 @@
                 width: 25%;
                 border-radius: 25%;
                 box-shadow: 0 0 10px 5px white;
+                filter: saturate(0.5); /* Added to reduce saturation */
             }
             /* Adding Text Next to Profile Picture */
             .profile-container {
