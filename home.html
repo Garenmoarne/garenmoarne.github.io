@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メインハブ</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-family: monospace;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        /* Glowing Rotating Loading Circle */
+        .loading-circle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top: 5px solid #fff;
+            border-radius: 50%;
+            animation: rotate 1s linear infinite, fadeOut 3s forwards;
+            z-index: 100;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        /* Fade-in effect for the content container */
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: showContent 1s 3.5s forwards;
+            position: relative;
+            z-index: 50;
+        }
+
+        @keyframes showContent {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* CRT Text Effect */
+        .crt {
+            animation: textShadow 1.6s infinite;
+        }
+
+        @keyframes textShadow {
+            0% {
+                text-shadow: 0.5px 0 1px rgba(255, 255, 255, 0.5), -0.5px 0 1px rgba(255, 255, 255, 0.3), 0 0 3px;
+            }
+            100% {
+                text-shadow: 3px 0 1px rgba(255, 255, 255, 0.5), -3px 0 1px rgba(255, 255, 255, 0.3), 0 0 3px;
+            }
+        }
+
+        .button-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .button-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .crt-button {
+            background: none;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-family: monospace;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .crt-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: skewX(-20deg);
+            transition: 0.5s;
+        }
+
+        .crt-button:hover::before {
+            left: 100%;
+        }
+
+        .crt-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-shadow: 0 0 5px #fff;
+            border-color: #fff;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        .description {
+            position: absolute;
+            left: calc(100% + 20px);
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #fff;
+            padding: 10px;
+            width: 200px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+            font-size: 14px;
+            z-index: 100;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .button-container:hover .description {
+            opacity: 1;
+            transform: translateY(-50%) translateX(10px);
+        }
+
+        @media (max-width: 768px) {
+            .description {
+                left: 50%;
+                top: 100%;
+                transform: translateX(-50%);
+                margin-top: 10px;
+                width: 90%;
+            }
+
+            .button-container {
+                margin-bottom: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-circle"></div>
+
+    <div class="container crt">
+        <div class="button-list">
+            <div class="button-container">
+                <button onclick="window.location.href='https://www.example1.com'" class="crt-button">SYSTEM_01</button>
+                <div class="description">Access to primary mainframe system. Security clearance level ALPHA required.</div>
+            </div>
+
+            <div class="button-container">
+                <button onclick="window.location.href='https://www.example2.com'" class="crt-button">NETWORK_02</button>
+                <div class="description">Global network interface. Contains classified communication protocols.</div>
+            </div>
+
+            <div class="button-container">
+                <button onclick="window.location.href='https://www.example3.com'" class="crt-button">DATABASE_03</button>
+                <div class="description">Restricted database access. Contains encrypted research data.</div>
+            </div>
+
+            <div class="button-container">
+                <button onclick="window.location.href='https://www.example4.com'" class="crt-button">ARCHIVE_04</button>
+                <div class="description">Historical records and backup systems. Limited access permitted.</div>
+            </div>
+
+            <div class="button-container">
+                <button onclick="window.location.href='https://www.example5.com'" class="crt-button">TERMINAL_05</button>
+                <div class="description">Remote terminal connection. Emergency protocols active.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addFlicker() {
+            const container = document.querySelector('.container');
+            setInterval(() => {
+                if (Math.random() < 0.03) {
+                    container.style.opacity = Math.random() * 0.3 + 0.7;
+                    setTimeout(() => {
+                        container.style.opacity = 1;
+                    }, 50);
+                }
+            }, 100);
+        }
+
+        setTimeout(addFlicker, 3000);
+    </script>
+</body>
+</html>
