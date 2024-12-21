@@ -15,7 +15,6 @@
             position: relative;
             min-height: 100vh;
         }
-
         /* Full Screen CRT Effect Wrapper */
         .crt-screen {
             position: fixed;
@@ -28,7 +27,6 @@
             z-index: 999;
             mix-blend-mode: overlay;
         }
-
         /* Enhanced CRT Scanlines */
         .crt-scanlines::before {
             content: "";
@@ -53,7 +51,6 @@
             pointer-events: none;
             animation: flicker 0.15s infinite;
         }
-
         /* Improved CRT Flicker Effect */
         .crt-flicker::after {
             content: "";
@@ -69,7 +66,6 @@
             pointer-events: none;
             animation: flicker 0.15s infinite;
         }
-
         /* Loading Circle Synchronization */
         .loading-circle {
             position: fixed;
@@ -84,12 +80,10 @@
             animation: rotate 1s linear infinite, fadeOut 3s forwards;
             z-index: 1000;
         }
-
         @keyframes rotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
         @keyframes fadeOut {
             0% { opacity: 1; }
             80% { opacity: 1; }
@@ -98,7 +92,6 @@
                 visibility: hidden;
             }
         }
-
         /* Container Adjustments */
         .container {
             padding: 20px;
@@ -109,7 +102,6 @@
             position: relative;
             z-index: 50;
         }
-
         @keyframes showContent {
             0% {
                 opacity: 0;
@@ -120,12 +112,10 @@
                 transform: scale(1);
             }
         }
-
         /* Flicker Effect for Text */
         .crt {
             animation: textShadow 1.6s infinite;
         }
-
         @keyframes textShadow {
             0% {
                 text-shadow: 0.5px 0 1px rgba(255, 255, 255, 0.5),
@@ -138,19 +128,16 @@
                            0 0 3px;
             }
         }
-
         /* Button Styles */
         .button-list {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
-
         .button-container {
             position: relative;
             width: 100%;
         }
-
         .crt-button {
             background: none;
             border: 2px solid #fff;
@@ -168,7 +155,6 @@
             text-align: left;
             overflow: hidden;
         }
-
         .crt-button::before {
             content: '';
             position: absolute;
@@ -180,11 +166,9 @@
             transform: skewX(-20deg);
             transition: 0.5s;
         }
-
         .crt-button:hover::before {
             left: 100%;
         }
-
         .crt-button:hover {
             background: rgba(255, 255, 255, 0.1);
             color: #fff;
@@ -192,7 +176,6 @@
             border-color: #fff;
             box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
-
         .description {
             position: absolute;
             left: calc(100% + 20px);
@@ -209,12 +192,10 @@
             z-index: 100;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
-
         .button-container:hover .description {
             opacity: 1;
             transform: translateY(-50%) translateX(10px);
         }
-
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             .description {
@@ -224,23 +205,36 @@
                 margin-top: 10px;
                 width: 90%;
             }
-
             .button-container {
                 margin-bottom: 60px;
             }
+        }
+        /* Profile Picture Glow Effect */
+        .profile-container img {
+            width: 25%;
+            border-radius: 25%;
+            box-shadow: 0 0 10px 5px white;
+        }
+        /* Adding Text Next to Profile Picture */
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .profile-text {
+            font-size: 20px;
         }
     </style>
 </head>
 <body class="crt crt-scanlines crt-flicker">
     <div class="crt-screen"></div>
     <div class="loading-circle"></div> <!-- Loading Indicator -->
-
     <div class="container">
         <div class="button-list">
             <div class="profile-container">
-                <img src="pfp.jpg" alt="Profile Picture" style="width: 25%; border-radius: 25%;">
+                <img src="pfp.jpg" alt="Profile Picture">
+                <div class="profile-text">Your Text Here</div>
             </div>
-
             <div class="button-container">
                 <button onclick="window.location.href='https://www.instagram.com/garenmoarne/'" class="crt-button">SOCIAL_01</button>
                 <div class="description">Access to the INSTAGRAM of GARENMOARNE.</div>
@@ -248,7 +242,6 @@
             <!-- Add more buttons as needed -->
         </div>
     </div>
-
     <script>
         // Flicker Effect for Container
         function addFlicker() {
@@ -262,10 +255,8 @@
                 }
             }, 100);
         }
-
         // Initialize Flicker After Loading Circle Fades Out
         setTimeout(addFlicker, 3000); // Matches the fadeOut duration of loading-circle
-
         // Optional: Add additional synchronized animations or effects here
     </script>
 </body>
