@@ -1,54 +1,164 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+\<!DOCTYPE html><html><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABYSSUXS™</title>
     <style>
-        /* Existing Styles ... */
-
-        /* Loading Container Enhancements */
-        .loading-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+        body {
+            margin: 0;
+            padding: 0;
             background: #000;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(45deg, #1a1a1a 25%, transparent 25%),
+                        linear-gradient(-45deg, #1a1a1a 25%, transparent 25%),
+                        linear-gradient(45deg, transparent 75%, #1a1a1a 75%),
+                        linear-gradient(-45deg, transparent 75%, #1a1a1a 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            animation: backgroundMove 20s linear infinite;
         }
 
-        .loading-container.active {
-            opacity: 1;
+        @keyframes backgroundMove {
+            0% {
+                background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            }
+            100% {
+                background-position: -400px 0, -400px 10px, -390px -10px, -410px 0px;
+            }
         }
 
-        .loading-text {
-            color: #fff;
-            font-size: 1.5em;
-            letter-spacing: 3px;
+        .monitor {
             position: relative;
-            z-index: 1001;
+            width: 80vw;
+            max-width: 800px;
+            height: 60vh;
+            background: #111;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .loading-dots::after {
-            content: '';
-            animation: dots 2s infinite;
+        .monitor::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            animation: scanline 10s linear infinite;
         }
 
-        @keyframes dots {
-            0%, 20% { content: '.'; }
-            40% { content: '..'; }
-            60% { content: '...'; }
-            90%, 100% { content: ''; }
+        .monitor::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                ellipse at center,
+                transparent 0%,
+                rgba(0, 0, 0, 0.2) 80%,
+                rgba(0, 0, 0, 0.4) 100%
+            );
+            pointer-events: none;
         }
 
-        /* Ensure CRT Effects are maintained */
+        @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100%); }
+        }
+
+        .vignette {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .crt-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                rgba(255, 255, 255, 0.1) 50%,
+                rgba(0, 0, 0, 0.1) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.3;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .logo {
+            font-size: 3em;
+            margin-bottom: 30px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: textFlicker 5s infinite;
+        }
+
+        @keyframes textFlicker {
+            0%, 100% { opacity: 1; }
+            92% { opacity: 1; }
+            92.5% { opacity: 0; }
+            93% { opacity: 1; }
+            93.5% { opacity: 0; }
+            94% { opacity: 1; }
+        }
+
+        .start-btn {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .start-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
         .monitor.zoom {
             transform: scale(1.2);
         }
@@ -65,7 +175,37 @@
             background: #000;
         }
 
-        /* Responsive Adjustments */
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .loading-text {
+            color: #fff;
+            font-size: 1.5em;
+            letter-spacing: 3px;
+        }
+
+        .loading-dots::after {
+            content: '';
+            animation: dots 2s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60% { content: '...'; }
+            90%, 100% { content: ''; }
+        }
+
         @media (max-width: 768px) {
             .monitor {
                 width: 90vw;
@@ -100,32 +240,31 @@
             const content = document.querySelector('.content');
             const loadingContainer = document.querySelector('.loading-container');
 
-            // Start Zoom Animation
+            // First zoom
             monitor.classList.add('zoom');
 
-            // After Zoom, Maximize
+            // After zoom, maximize
             setTimeout(() => {
                 monitor.classList.add('maximize');
-            }, 1500); // 1.5 seconds
+            }, 1500);
 
-            // After Maximize, Blackout
+            // After maximize, turn black
             setTimeout(() => {
                 monitor.classList.add('blackout');
                 content.style.opacity = '0';
-            }, 3000); // 1.5 seconds after maximizing
+            }, 3000);
 
-            // Activate Loading Screen
+            // Show loading screen
             setTimeout(() => {
-                loadingContainer.classList.add('active');
-            }, 4500); // 1.5 seconds after blackout
-
-            // Redirect to Home Page After Loading
-            setTimeout(() => {
-                window.location.href = 'home.html';
-            }, 7500); // Total of 3 seconds loading
+                loadingContainer.style.display = 'flex';
+                // Replace '#' with your destination URL
+                setTimeout(() => {
+                    window.location.href = 'home.html';
+                }, 3000); // Redirect after 3 seconds of loading
+            }, 4500);
         });
 
-        // Add Random Glitch Effect
+        // Add random glitch effect
         setInterval(() => {
             if (Math.random() < 0.1) {
                 const monitor = document.querySelector('.monitor');
@@ -136,5 +275,6 @@
             }
         }, 2000);
     </script>
-</body>
-</html>
+
+
+</body></html>
