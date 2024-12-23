@@ -2,8 +2,7 @@
 const firebaseConfig = {
   apiKey: "AIzaSyC2okltvvgt88KQptDvFg7LvY_SGNr9N9s",
   authDomain: "chatting-3bf48.firebaseapp.com",
-  databaseURL:
-    "https://chatting-3bf48-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  databaseURL: "https://chatting-3bf48-default-rtdb.asia-southeast1.firebasedatabase.app/",
   projectId: "chatting-3bf48",
   storageBucket: "YOUR_STORAGE_BUCKET",
   messagingSenderId: "803318274234",
