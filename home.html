@@ -8,8 +8,9 @@
             body {
                 margin: 0;
                 padding: 0;
-                background: #000;
-                font-family: Arial, Helvetica, sans-serif;
+                background: url('texture-bg.jpg') #000 no-repeat center center fixed;
+                background-size: cover;
+                font-family: 'Courier New', Courier, monospace;
                 overflow: hidden;
                 color: #fff;
                 position: relative;
@@ -22,12 +23,7 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: rgba(
-                    0,
-                    0,
-                    0,
-                    0.7
-                ); /* Changed from #000 to semi-transparent */
+                background: rgba(0, 0, 0, 0.7);
                 pointer-events: none;
                 z-index: 999;
                 mix-blend-mode: overlay;
@@ -43,22 +39,16 @@
                 right: 0;
                 background: linear-gradient(
                         rgba(18, 16, 16, 0) 50%,
-                        rgba(0, 0, 0, 0.4) 50%
-                            /* Increased opacity from 0.25 to 0.4 */
+                        rgba(0, 0, 0, 0.5) 50%
                     ),
                     linear-gradient(
                         90deg,
                         rgba(255, 0, 0, 0.1),
-                        /* Increased opacity from 0.06 to 0.1 */
-                            rgba(0, 255, 0, 0.05),
-                        /* Increased opacity from 0.02 to 0.05 */
-                            rgba(0, 0, 255, 0.1)
-                            /* Increased opacity from 0.06 to 0.1 */
+                        rgba(0, 255, 0, 0.05),
+                        rgba(0, 0, 255, 0.1)
                     );
                 z-index: 2;
-                background-size:
-                    100% 2px,
-                    3px 100%;
+                background-size: 100% 2px, 3px 100%;
                 pointer-events: none;
                 animation: flicker 0.15s infinite;
             }
@@ -88,30 +78,17 @@
                 border: 5px solid rgba(255, 255, 255, 0.1);
                 border-top: 5px solid #fff;
                 border-radius: 50%;
-                animation:
-                    rotate 1s linear infinite,
-                    fadeOut 3s forwards;
+                animation: rotate 1s linear infinite, fadeOut 3s forwards;
                 z-index: 1000;
             }
             @keyframes rotate {
-                0% {
-                    transform: rotate(0deg);
-                }
-                100% {
-                    transform: rotate(360deg);
-                }
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
             }
             @keyframes fadeOut {
-                0% {
-                    opacity: 1;
-                }
-                80% {
-                    opacity: 1;
-                }
-                100% {
-                    opacity: 0;
-                    visibility: hidden;
-                }
+                0% { opacity: 1; }
+                80% { opacity: 1; }
+                100% { opacity: 0; visibility: hidden; }
             }
             /* Container Adjustments */
             .container {
@@ -119,37 +96,25 @@
                 max-width: 800px;
                 margin: 0 auto;
                 opacity: 0;
-                animation: showContent 1s 3s forwards; /* Delay matches fadeOut duration */
+                animation: showContent 1s 3s forwards;
                 position: relative;
                 z-index: 50;
+                background: rgba(0, 0, 0, 0.8);
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+                border: 3px solid #fff;
+                border-radius: 10px;
             }
             @keyframes showContent {
-                0% {
-                    opacity: 0;
-                    transform: scale(0.9);
-                }
-                100% {
-                    opacity: 1;
-                    transform: scale(1);
-                }
+                0% { opacity: 0; transform: scale(0.9); }
+                100% { opacity: 1; transform: scale(1); }
             }
             /* Flicker Effect for Text */
             .crt {
                 animation: textShadow 1.6s infinite;
             }
             @keyframes textShadow {
-                0% {
-                    text-shadow:
-                        0.5px 0 1px rgba(255, 255, 255, 0.5),
-                        -0.5px 0 1px rgba(255, 255, 255, 0.3),
-                        0 0 3px;
-                }
-                100% {
-                    text-shadow:
-                        3px 0 1px rgba(255, 255, 255, 0.5),
-                        -3px 0 1px rgba(255, 255, 255, 0.3),
-                        0 0 3px;
-                }
+                0% { text-shadow: 0.5px 0 1px rgba(255, 255, 255, 0.5), -0.5px 0 1px rgba(255, 255, 255, 0.3), 0 0 3px; }
+                100% { text-shadow: 3px 0 1px rgba(255, 255, 255, 0.5), -3px 0 1px rgba(255, 255, 255, 0.3), 0 0 3px; }
             }
             /* Button Styles */
             .button-list {
@@ -162,7 +127,7 @@
                 width: 100%;
             }
             .crt-button {
-                background: none;
+                background: #333;
                 border: 2px solid #fff;
                 color: #fff;
                 padding: 15px 30px;
@@ -177,6 +142,7 @@
                 box-sizing: border-box;
                 text-align: left;
                 overflow: hidden;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             }
             .crt-button::before {
                 content: "";
@@ -197,7 +163,7 @@
                 color: #fff;
                 text-shadow: 0 0 5px #fff;
                 border-color: #fff;
-                box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
                 animation: glitch 0.5s infinite;
             }
             .crt-button::after {
@@ -213,52 +179,19 @@
                 clip: rect(0, 0, 0, 0);
             }
             @keyframes glitch {
-                0% {
-                    clip: rect(42px, 9999px, 44px, 0);
-                    transform: translate(0.5px, -0.5px);
-                }
-                5% {
-                    clip: rect(12px, 9999px, 44px, 0);
-                    transform: translate(-0.5px, 0.5px);
-                }
-                10% {
-                    clip: rect(22px, 9999px, 30px, 0);
-                    transform: translate(0.5px, -0.5px);
-                }
-                15% {
-                    clip: rect(32px, 9999px, 38px, 0);
-                    transform: translate(-0.5px, 0.5px);
-                }
-                20% {
-                    clip: rect(10px, 9999px, 50px, 0);
-                    transform: translate(0.5px, -0.5px);
-                }
-                25% {
-                    clip: rect(15px, 9999px, 35px, 0);
-                    transform: translate(-0.5px, 0.5px);
-                }
-                30% {
-                    clip: rect(20px, 9999px, 40px, 0);
-                    transform: translate(0.5px, -0.5px);
-                }
-                35% {
-                    clip: rect(25px, 9999px, 45px, 0);
-                    transform: translate(-0.5px, 0.5px);
-                }
-                40%,
-                100% {
-                    clip: rect(30px, 9999px, 50px, 0);
-                    transform: translate(0, 0);
-                }
+                0% { clip: rect(42px, 9999px, 44px, 0); transform: translate(0.5px, -0.5px); }
+                5% { clip: rect(12px, 9999px, 44px, 0); transform: translate(-0.5px, 0.5px); }
+                10% { clip: rect(22px, 9999px, 30px, 0); transform: translate(0.5px, -0.5px); }
+                15% { clip: rect(32px, 9999px, 38px, 0); transform: translate(-0.5px, 0.5px); }
+                20% { clip: rect(10px, 9999px, 50px, 0); transform: translate(0.5px, -0.5px); }
+                25% { clip: rect(15px, 9999px, 35px, 0); transform: translate(-0.5px, 0.5px); }
+                30% { clip: rect(20px, 9999px, 40px, 0); transform: translate(0.5px, -0.5px); }
+                35% { clip: rect(25px, 9999px, 45px, 0); transform: translate(-0.5px, 0.5px); }
+                40%, 100% { clip: rect(30px, 9999px, 50px, 0); transform: translate(0, 0); }
             }
             @keyframes flicker {
-                0%,
-                100% {
-                    opacity: 1;
-                }
-                50% {
-                    opacity: 0.8;
-                }
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.8; }
             }
             .description {
                 position: absolute;
@@ -298,7 +231,7 @@
                 width: 25%;
                 border-radius: 25%;
                 box-shadow: 0 0 10px 5px white;
-                filter: saturate(0.5); /* Added to reduce saturation */
+                filter: saturate(0.5);
             }
             /* Adding Text Next to Profile Picture */
             .profile-container {
@@ -356,9 +289,6 @@
                     >
                         SOCIAL_01
                     </button>
-                    <div class="description">
-                        a chat section :)
-                    </div>
                 </div>
                 <!-- Add more buttons as needed -->
             </div>
