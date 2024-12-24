@@ -6,9 +6,9 @@
     <title>メインハブ</title>
     <style>
         :root {
-            --primary-color: #00ff00;
+            --primary-color: #ffffff;
             --bg-color: #000000;
-            --glow: 0 0 10px #00ff00;
+            --glow: 0 0 10px #ffffff;
         }
 
         body {
@@ -31,8 +31,8 @@
             background: #111;
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2),
-                        inset 0 0 20px rgba(0, 255, 0, 0.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2),
+                        inset 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
         .screen {
@@ -74,6 +74,7 @@
             font-size: 12px;
             text-align: center;
             opacity: 0.7;
+            filter: grayscale(100%);
         }
 
         .profile-info {
@@ -137,7 +138,7 @@
             background: linear-gradient(
                 to bottom,
                 transparent 50%,
-                rgba(0, 255, 0, 0.02) 50%
+                rgba(255, 255, 255, 0.02) 50%
             );
             background-size: 100% 4px;
             pointer-events: none;
