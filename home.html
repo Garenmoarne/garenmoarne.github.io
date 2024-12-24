@@ -1,314 +1,208 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>メインハブ</title>
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                background: url('texture-bg.jpg') #000 no-repeat center center fixed;
-                background-size: cover;
-                font-family: 'Courier New', Courier, monospace;
-                overflow: hidden;
-                color: #fff;
-                position: relative;
-                min-height: 100vh;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メインハブ Terminal</title>
+    <style>
+        :root {
+            --primary-color: #00ff00;
+            --bg-color: #000000;
+            --glow: 0 0 10px #00ff00;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .crt-frame {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            background: #111;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2),
+                        inset 0 0 20px rgba(0, 255, 0, 0.1);
+        }
+
+        .screen {
+            position: relative;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 40px;
+            text-shadow: var(--glow);
+        }
+
+        .profile-container {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid var(--primary-color);
+            border-radius: 10px;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border: 2px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .profile-picture::before {
+            content: "[PROFILE IMAGE]";
+            font-size: 12px;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        .profile-info {
+            flex-grow: 1;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-shadow: var(--glow);
+        }
+
+        .profile-description {
+            font-size: 16px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .button {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-decoration: none;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button:hover {
+            background: var(--primary-color);
+            color: var(--bg-color);
+            text-shadow: none;
+            box-shadow: var(--glow);
+        }
+
+        .button::before {
+            content: attr(data-description);
+            position: absolute;
+            right: 20px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .scanline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 50%,
+                rgba(0, 255, 0, 0.02) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.97; }
+            50% { opacity: 1; }
+            100% { opacity: 0.98; }
+        }
+
+        .screen {
+            animation: flicker 0.15s infinite;
+        }
+
+        @media (max-width: 600px) {
+            .crt-frame {
+                padding: 15px;
             }
-            /* Full Screen CRT Effect Wrapper */
-            .crt-screen {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(0, 0, 0, 0.7);
-                pointer-events: none;
-                z-index: 999;
-                mix-blend-mode: overlay;
-            }
-            /* Enhanced CRT Scanlines */
-            .crt-scanlines::before {
-                content: "";
-                display: block;
-                position: fixed;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
-                background: linear-gradient(
-                        rgba(18, 16, 16, 0) 50%,
-                        rgba(0, 0, 0, 0.5) 50%
-                    ),
-                    linear-gradient(
-                        90deg,
-                        rgba(255, 0, 0, 0.1),
-                        rgba(0, 255, 0, 0.05),
-                        rgba(0, 0, 255, 0.1)
-                    );
-                z-index: 2;
-                background-size: 100% 2px, 3px 100%;
-                pointer-events: none;
-                animation: flicker 0.15s infinite;
-            }
-            /* Improved CRT Flicker Effect */
-            .crt-flicker::after {
-                content: "";
-                display: block;
-                position: fixed;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
-                background: rgba(18, 16, 16, 0.1);
-                opacity: 0;
-                z-index: 2;
-                pointer-events: none;
-                animation: flicker 0.15s infinite;
-            }
-            /* Loading Circle Synchronization */
-            .loading-circle {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                width: 50px;
-                height: 50px;
-                margin: -25px 0 0 -25px;
-                border: 5px solid rgba(255, 255, 255, 0.1);
-                border-top: 5px solid #fff;
-                border-radius: 50%;
-                animation: rotate 1s linear infinite, fadeOut 3s forwards;
-                z-index: 1000;
-            }
-            @keyframes rotate {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
-            }
-            @keyframes fadeOut {
-                0% { opacity: 1; }
-                80% { opacity: 1; }
-                100% { opacity: 0; visibility: hidden; }
-            }
-            /* Container Adjustments */
-            .container {
-                padding: 20px;
-                max-width: 800px;
-                margin: 0 auto;
-                opacity: 0;
-                animation: showContent 1s 3s forwards;
-                position: relative;
-                z-index: 50;
-                background: rgba(0, 0, 0, 0.8);
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-                border: 3px solid #fff;
-                border-radius: 10px;
-            }
-            @keyframes showContent {
-                0% { opacity: 0; transform: scale(0.9); }
-                100% { opacity: 1; transform: scale(1); }
-            }
-            /* Flicker Effect for Text */
-            .crt {
-                animation: textShadow 1.6s infinite;
-            }
-            @keyframes textShadow {
-                0% { text-shadow: 0.5px 0 1px rgba(255, 255, 255, 0.5), -0.5px 0 1px rgba(255, 255, 255, 0.3), 0 0 3px; }
-                100% { text-shadow: 3px 0 1px rgba(255, 255, 255, 0.5), -3px 0 1px rgba(255, 255, 255, 0.3), 0 0 3px; }
-            }
-            /* Button Styles */
-            .button-list {
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-            }
-            .button-container {
-                position: relative;
-                width: 100%;
-            }
-            .crt-button {
-                background: #333;
-                border: 2px solid #fff;
-                color: #fff;
-                padding: 15px 30px;
-                font-size: 18px;
-                font-family: monospace;
-                cursor: pointer;
-                position: relative;
-                transition: all 0.3s;
-                text-decoration: none;
-                display: block;
-                width: 100%;
-                box-sizing: border-box;
-                text-align: left;
-                overflow: hidden;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            }
-            .crt-button::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: -100%;
-                width: 100%;
-                height: 100%;
-                background: rgba(255, 255, 255, 0.1);
-                transform: skewX(-20deg);
-                transition: 0.5s;
-            }
-            .crt-button:hover::before {
-                left: 100%;
-            }
-            .crt-button:hover {
-                background: rgba(255, 255, 255, 0.1);
-                color: #fff;
-                text-shadow: 0 0 5px #fff;
-                border-color: #fff;
-                box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-                animation: glitch 0.5s infinite;
-            }
-            .crt-button::after {
-                content: attr(data-text);
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                background: none;
-                color: #fff;
-                overflow: hidden;
-                clip: rect(0, 0, 0, 0);
-            }
-            @keyframes glitch {
-                0% { clip: rect(42px, 9999px, 44px, 0); transform: translate(0.5px, -0.5px); }
-                5% { clip: rect(12px, 9999px, 44px, 0); transform: translate(-0.5px, 0.5px); }
-                10% { clip: rect(22px, 9999px, 30px, 0); transform: translate(0.5px, -0.5px); }
-                15% { clip: rect(32px, 9999px, 38px, 0); transform: translate(-0.5px, 0.5px); }
-                20% { clip: rect(10px, 9999px, 50px, 0); transform: translate(0.5px, -0.5px); }
-                25% { clip: rect(15px, 9999px, 35px, 0); transform: translate(-0.5px, 0.5px); }
-                30% { clip: rect(20px, 9999px, 40px, 0); transform: translate(0.5px, -0.5px); }
-                35% { clip: rect(25px, 9999px, 45px, 0); transform: translate(-0.5px, 0.5px); }
-                40%, 100% { clip: rect(30px, 9999px, 50px, 0); transform: translate(0, 0); }
-            }
-            @keyframes flicker {
-                0%, 100% { opacity: 1; }
-                50% { opacity: 0.8; }
-            }
-            .description {
-                position: absolute;
-                left: calc(100% + 20px);
-                top: 50%;
-                transform: translateY(-50%);
-                background: rgba(0, 0, 0, 0.9);
-                border: 1px solid #fff;
-                padding: 10px;
-                width: 200px;
-                opacity: 0;
-                pointer-events: none;
-                transition: all 0.3s;
-                font-size: 14px;
-                z-index: 100;
-                box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-            }
-            .button-container:hover .description {
-                opacity: 1;
-                transform: translateY(-50%) translateX(10px);
-            }
-            /* Responsive Adjustments */
-            @media (max-width: 768px) {
-                .description {
-                    left: 50%;
-                    top: 100%;
-                    transform: translateX(-50%);
-                    margin-top: 10px;
-                    width: 90%;
-                }
-                .button-container {
-                    margin-bottom: 60px;
-                }
-            }
-            /* Profile Picture Glow Effect */
-            .profile-container img {
-                width: 25%;
-                border-radius: 25%;
-                box-shadow: 0 0 10px 5px white;
-                filter: saturate(0.5);
-            }
-            /* Adding Text Next to Profile Picture */
+            
             .profile-container {
-                display: flex;
+                flex-direction: column;
                 align-items: center;
-                gap: 20px;
             }
-            .profile-text {
-                font-size: 20px;
+
+            .button::before {
+                position: static;
+                display: block;
+                margin-top: 5px;
             }
-            .profile-title {
-                font-size: 50px;
-                font-family: "Helvetica Condensed", Arial, sans-serif;
-                font-weight: bold;
-                position: relative;
-                animation: glitch 1s infinite;
-            }
-            .profile-title::before,
-            .profile-title::after {
-                content: "GARENMOARNE";
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: none;
-                color: #fff;
-                overflow: hidden;
-                clip: rect(0, 0, 0, 0);
-                animation: glitch 1s infinite;
-            }
-            .profile-title::after {
-                color: #ff00ff;
-                left: 2px;
-                text-shadow: -2px 0 red;
-                animation-delay: -0.5s;
-            }
-        </style>
-    </head>
-    <body class="crt crt-scanlines crt-flicker">
-        <div class="crt-screen"></div>
-        <div class="loading-circle"></div>
-        <!-- Loading Indicator -->
-        <div class="container">
-            <div class="button-list">
-                <div class="profile-container">
-                    <img src="pfp.jpg" alt="Profile Picture" />
-                    <div class="profile-title"><b1>GARENMOARNE</b1></div>
+        }
+    </style>
+</head>
+<body>
+    <div class="crt-frame">
+        <div class="screen">
+            <h1>メインハブ</h1>
+            
+            <div class="profile-container">
+                <div class="profile-picture"></div>
+                <div class="profile-info">
+                    <div class="profile-name">GARENMOARNE</div>
+                    <div class="profile-description">
+                        [Please add your description here. This will appear next to your profile picture.]
+                    </div>
                 </div>
-                <div class="button-container">
-                    <button
-                        onclick="window.location.href='https://www.instagram.com/garenmoarne/'"
-                        class="crt-button"
-                        data-text="SOCIAL_01"
-                    >
-                        SOCIAL_01
-                    </button>
-                </div>
-                <!-- Add more buttons as needed -->
             </div>
+
+            <div class="menu">
+                <a href="#" class="button" data-description="// View Profile">PROFILE</a>
+                <a href="#" class="button" data-description="// Communication Hub">SOCIAL_01</a>
+            </div>
+            <div class="scanline"></div>
         </div>
-        <script>
-            // Flicker Effect for Container
-            function addFlicker() {
-                const container = document.querySelector(".container");
-                setInterval(() => {
-                    if (Math.random() < 0.03) {
-                        container.style.opacity = Math.random() * 0.3 + 0.7;
-                        setTimeout(() => {
-                            container.style.opacity = "1";
-                        }, 50);
-                    }
-                }, 100);
-            }
-            // Initialize Flicker After Loading Circle Fades Out
-            setTimeout(addFlicker, 3000); // Matches the fadeOut duration of loading-circle
-            // Optional: Add additional synchronized animations or effects here
-        </script>
-    </body>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const screen = document.querySelector('.screen');
+            screen.style.opacity = '0';
+            setTimeout(() => {
+                screen.style.transition = 'opacity 1s ease-in';
+                screen.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
 </html>
