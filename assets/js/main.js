@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Terminal text effect
     const terminalText = document.querySelector('.terminal-text');
     if (terminalText) {
-        let text = "INITIALIZING SYSTEM...";
+        let text = "⇓⇓⇓SCROLL DOWN TO CONTINUE⇓⇓⇓";
         let index = 0;
         const timer = setInterval(() => {
             terminalText.textContent = text.substring(0, index);
