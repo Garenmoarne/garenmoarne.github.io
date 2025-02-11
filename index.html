@@ -8,32 +8,39 @@
     <link rel="stylesheet" href="assets/css/animations.css">
 </head>
 <body>
-    <!-- Scanlines Overlay -->
+    <!-- CRT Effects -->
     <div class="scanlines"></div>
-    
-    <!-- Animated Grid Background -->
     <div class="grid-bg"></div>
     
     <!-- Navigation -->
     <nav class="retro-nav">
         <ul>
-            <li><a href="#home" class="neon-link active">Home</a></li>
-            <li><a href="#about" class="neon-link">About</a></li>
-            <li><a href="#projects" class="neon-link">Projects</a></li>
-            <li><a href="#contact" class="neon-link">Contact</a></li>
+            <li><a href="#home" class="neon-link active">/// HOME</a></li>
+            <li><a href="#about" class="neon-link">/// ABOUT</a></li>
+            <li><a href="#projects" class="neon-link">/// PROJECTS</a></li>
+            <li><a href="#contact" class="neon-link">/// CONTACT</a></li>
         </ul>
     </nav>
 
-    <!-- Smooth Scroll Sections -->
-    <section id="home" class="fullscreen-section" data-color="#0f0f1a">
-        <!-- Hero content -->
+    <!-- Main Content Sections -->
+    <section id="home" class="fullscreen-section active">
+        <div class="content">
+            <h1 class="glitch-text" data-text="GARENMOARNE">GARENMOARNE</h1>
+            <p class="terminal-text">INITIALIZING SYSTEM...</p>
+        </div>
     </section>
 
-    <section id="about" class="fullscreen-section" data-color="#1a0f1a">
-        <!-- About content -->
+    <section id="about" class="fullscreen-section">
+        <div class="content">
+            <h2 class="neon-heading">> ABOUT_ME</h2>
+            <div class="retro-box">
+                <p class="typewriter">[root@cyber ~]$ whoami<br>
+                Passionate developer creating retro-futuristic experiences...</p>
+            </div>
+        </div>
     </section>
 
-    <!-- Other sections -->
+    <!-- Add other sections similarly -->
 
     <script src="assets/js/main.js"></script>
 </body>
