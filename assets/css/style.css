@@ -1,15 +1,49 @@
-/* Fixed Navigation with cyber glow */
+/* Reset and Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-glow: rgba(255, 255, 255, 0.5);
+    --secondary-glow: rgba(255, 255, 255, 0.2);
+    --nav-bg: rgba(0, 0, 0, 0.95);
+    --text-color: #ffffff;
+    --transition-speed: 0.3s;
+}
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100%;
+    overflow-x: hidden;
+    background: #111;
+    color: var(--text-color);
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+    filter: grayscale(100%);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Performance Optimized Fixed Navigation */
 .cyber_floaty_brain_container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.9); /* Increased opacity for better readability */
+    background: var(--nav-bg);
     padding: 1rem;
     z-index: 1000;
-    -webkit-backdrop-filter: blur(5px); /* Added webkit prefix for Safari */
+    -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px var(--secondary-glow);
+    transform: translateZ(0); /* Force GPU acceleration */
 }
 
 .neurolink_nav_wrapper {
@@ -18,23 +52,38 @@
     display: flex;
     justify-content: center;
     gap: 2rem;
-    flex-wrap: wrap; /* Added for better mobile responsiveness */
+    flex-wrap: wrap;
+    padding: 0 1rem;
 }
 
+/* Optimized Button Styles */
 .mind_melt_button {
-    color: #fff;
+    color: var(--text-color);
     text-decoration: none;
     padding: 0.5rem 1.5rem;
-    border: 1px solid #fff;
+    border: 1px solid currentColor;
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease; /* Added ease for smoother transitions */
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    cursor: pointer; /* Added cursor pointer */
-    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+    transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: 0 0 5px var(--primary-glow);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    background: transparent;
+    outline: none;
 }
 
-/* Loading screen - Fixed opacity transition */
+.mind_melt_button:focus-visible {
+    box-shadow: 0 0 0 2px var(--primary-glow);
+}
+
+.mind_melt_button:hover,
+.mind_melt_button.active {
+    background: var(--secondary-glow);
+    box-shadow: 0 0 15px var(--primary-glow);
+    transform: translateY(-1px);
+}
+
+/* Optimized Loading Screen */
 .neural_loading_wrapper {
     position: fixed;
     top: 0;
@@ -46,33 +95,76 @@
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    opacity: 1; /* Set initial opacity */
-    visibility: visible; /* Added visibility property */
-    transition: opacity 0.5s ease, visibility 0.5s ease; /* Added visibility to transition */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity var(--transition-speed) ease,
+                visibility var(--transition-speed) ease;
 }
 
 .neural_loading_wrapper.loaded {
     opacity: 0;
-    visibility: hidden; /* Hide completely when loaded */
+    visibility: hidden;
+    pointer-events: none;
 }
 
-/* Fixed section transitions */
+/* Optimized Section Styles */
 .psychosis_section {
     opacity: 0;
     transform: scale(0.98);
-    transition: none;
-    will-change: transform, opacity; /* Optimize performance */
+    transition: opacity var(--transition-speed) ease,
+                transform var(--transition-speed) ease;
+    will-change: transform, opacity;
+    padding: 4rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Added media queries for responsive design */
+.psychosis_section.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Content Styles */
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--secondary-glow);
+    box-shadow: 0 0 20px var(--secondary-glow);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .neurolink_nav_wrapper {
-        gap: 1rem;
-        padding: 0 1rem;
+        gap: 0.5rem;
     }
     
     .mind_melt_button {
         padding: 0.3rem 1rem;
         font-size: 0.9rem;
+    }
+
+    .content {
+        padding: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .cyber_floaty_brain_container,
+    .neural_loading_wrapper,
+    .scanlines,
+    .grid-bg {
+        display: none !important;
     }
 }
