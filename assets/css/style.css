@@ -4,9 +4,10 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9); /* Increased opacity for better readability */
     padding: 1rem;
     z-index: 1000;
+    -webkit-backdrop-filter: blur(5px); /* Added webkit prefix for Safari */
     backdrop-filter: blur(5px);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
@@ -17,6 +18,7 @@
     display: flex;
     justify-content: center;
     gap: 2rem;
+    flex-wrap: wrap; /* Added for better mobile responsiveness */
 }
 
 .mind_melt_button {
@@ -26,17 +28,13 @@
     border: 1px solid #fff;
     position: relative;
     overflow: hidden;
-    transition: all 0.3s;
+    transition: all 0.3s ease; /* Added ease for smoother transitions */
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    cursor: pointer; /* Added cursor pointer */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
 }
 
-.mind_melt_button:hover {
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-    transform: scale(1.05);
-}
-
-/* Loading screen */
+/* Loading screen - Fixed opacity transition */
 .neural_loading_wrapper {
     position: fixed;
     top: 0;
@@ -48,69 +46,33 @@
     justify-content: center;
     align-items: center;
     z-index: 9999;
-    transition: opacity 0.5s;
+    opacity: 1; /* Set initial opacity */
+    visibility: visible; /* Added visibility property */
+    transition: opacity 0.5s ease, visibility 0.5s ease; /* Added visibility to transition */
 }
 
 .neural_loading_wrapper.loaded {
     opacity: 0;
-    pointer-events: none;
+    visibility: hidden; /* Hide completely when loaded */
 }
 
-.brainfry_loader {
-    width: 100px;
-    height: 100px;
-    border: 3px solid #333;
-    border-top: 3px solid #fff;
-    border-radius: 50%;
-    animation: neuron_spin 1s linear infinite;
-}
-
-/* Section transitions */
+/* Fixed section transitions */
 .psychosis_section {
     opacity: 0;
     transform: scale(0.98);
     transition: none;
+    will-change: transform, opacity; /* Optimize performance */
 }
 
-.psychosis_section.visible {
-    animation: brainrot_reveal 0.8s forwards;
-}
-
-/* Glow effects */
-.neon_mindbreak {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    transition: box-shadow 0.3s;
-}
-
-.neon_mindbreak:hover {
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
-}
-
-/* Animations */
-@keyframes neuron_spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes brainrot_reveal {
-    0% {
-        opacity: 0;
-        transform: scale(0.98);
-        filter: blur(10px);
+/* Added media queries for responsive design */
+@media (max-width: 768px) {
+    .neurolink_nav_wrapper {
+        gap: 1rem;
+        padding: 0 1rem;
     }
-    50% {
-        opacity: 0.5;
-        transform: scale(1.02);
-        filter: blur(5px);
+    
+    .mind_melt_button {
+        padding: 0.3rem 1rem;
+        font-size: 0.9rem;
     }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-        filter: blur(0);
-    }
-}
-
-/* Base layout adjustments */
-body {
-    padding-top: 60px; /* Accommodate fixed navigation */
 }
