@@ -2,32 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>アビサックス</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/animations.css">
-    <!-- Added meta tags for better SEO and mobile support -->
-    <meta name="description" content="A retro-futuristic portfolio website">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>アビサックス - Creative Portfolio</title>
+    
+    <!-- Meta tags for SEO and sharing -->
+    <meta name="description" content="A retro-futuristic creative portfolio website showcasing innovative digital experiences">
+    <meta name="keywords" content="portfolio, creative, digital, retro-futuristic">
+    <meta name="author" content="Garenmoarne">
     <meta name="theme-color" content="#000000">
-    <!-- Added preload for critical assets -->
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="アビサックス - Creative Portfolio">
+    <meta property="og:description" content="A retro-futuristic creative portfolio website">
+    <meta property="og:image" content="path-to-your-social-preview-image.jpg">
+    
+    <!-- Preload critical assets -->
     <link rel="preload" href="assets/css/style.css" as="style">
     <link rel="preload" href="assets/css/animations.css" as="style">
     <link rel="preload" href="assets/js/main.js" as="script">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Error handling -->
+    <script>
+        window.addEventListener('error', function(e) {
+            console.error('Global error:', e.error);
+        });
+    </script>
 </head>
 <body>
-    <!-- Loading Screen with fallback -->
-    <div class="neural_loading_wrapper">
+    <!-- Loading Screen -->
+    <div class="neural_loading_wrapper" role="progressbar" aria-label="Loading website">
         <div class="brainfry_loader"></div>
         <noscript>
             <p style="color: white;">Please enable JavaScript to view this website.</p>
         </noscript>
     </div>
 
-    <!-- CRT Effects with reduced GPU usage -->
+    <!-- CRT Effects -->
     <div class="scanlines" aria-hidden="true"></div>
     <div class="grid-bg" aria-hidden="true"></div>
     
-    <!-- Fixed Navigation with ARIA labels -->
+    <!-- Navigation -->
     <nav class="cyber_floaty_brain_container" role="navigation" aria-label="Main navigation">
         <div class="neurolink_nav_wrapper">
             <a href="#home" class="mind_melt_button active" aria-current="page">/// HOME</a>
@@ -37,12 +60,12 @@
         </div>
     </nav>
 
-    <!-- Main Content Sections with proper accessibility -->
-    <main>
+    <!-- Main Content -->
+    <main id="main-content">
         <section id="home" class="psychosis_section neon_mindbreak visible" aria-labelledby="home-title">
             <div class="content">
                 <h1 id="home-title" class="glitch-text" data-text="ABYSSUXS">ABYSSUXS</h1>
-                <p class="terminal-text" role="status">⇓⇓⇓SCROLL DOWN TO CONTINUE⇓⇓⇓</p>
+                <p class="terminal-text" role="status" aria-live="polite">⇓⇓⇓SCROLL DOWN TO CONTINUE⇓⇓⇓</p>
             </div>
         </section>
 
@@ -56,9 +79,26 @@
             </div>
         </section>
 
-        <!-- Other sections with similar accessibility improvements -->
+        <section id="projects" class="psychosis_section neon_mindbreak" aria-labelledby="projects-title">
+            <div class="content">
+                <h2 id="projects-title" class="neon-heading">> PROJECTS</h2>
+                <div class="retro-box">
+                    <p class="typewriter" role="text">Loading projects...</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="psychosis_section neon_mindbreak" aria-labelledby="contact-title">
+            <div class="content">
+                <h2 id="contact-title" class="neon-heading">> CONTACT</h2>
+                <div class="retro-box">
+                    <p class="typewriter" role="text">Establishing connection...</p>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <!-- Scripts -->
     <script src="assets/js/main.js" defer></script>
 </body>
 </html>
