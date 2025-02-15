@@ -2,8 +2,8 @@
 body {
     margin: 0;
     overflow-x: hidden;
-    background: #000;
-    color: #0f0;
+    background: #111;
+    color: #eee;
     font-family: 'Courier New', monospace;
     line-height: 1.6;
 }
@@ -30,8 +30,8 @@ body {
     width: 100%;
     height: 100%;
     background-image: 
-        linear-gradient(rgba(50, 255, 50, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(50, 255, 50, 0.05) 1px, transparent 1px);
+        linear-gradient(rgba(100, 100, 100, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 100, 100, 0.05) 1px, transparent 1px);
     background-size: 30px 30px;
     animation: gridScroll 100s linear infinite;
     z-index: -1;
@@ -72,19 +72,19 @@ body {
 }
 
 .neon-link {
-    color: #0ff;
+    color: #eee;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    border: 1px solid #0ff;
+    border: 1px solid #eee;
     position: relative;
     transition: all 0.3s ease;
 }
 
 .neon-link:hover {
-    box-shadow: 0 0 15px #0ff;
-    text-shadow: 0 0 10px #0ff;
+    box-shadow: 0 0 15px #eee;
+    text-shadow: 0 0 10px #eee;
 }
 
 .neon-link.active {
-    background: rgba(0, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
 }
