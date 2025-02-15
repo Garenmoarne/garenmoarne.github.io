@@ -1,23 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Scroll handling
-    const sections = document.querySelectorAll('.fullscreen-section');
-    const navLinks = document.querySelectorAll('.neon-link');
+    // Loading screen
+    const loadingScreen = document.querySelector('.neural_loading_wrapper');
     
-    // Intersection Observer setup
+    // Simulate loading time (you can adjust this based on actual asset loading)
+    setTimeout(() => {
+        loadingScreen.classList.add('loaded');
+    }, 2000);
+
+    // Intersection Observer for sections
+    const sections = document.querySelectorAll('.psychosis_section');
+    const navLinks = document.querySelectorAll('.mind_melt_button');
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const id = entry.target.getAttribute('id');
+                entry.target.classList.add('visible');
+                
+                // Update navigation
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${id}`) {
                         link.classList.add('active');
                     }
                 });
-                entry.target.classList.add('active');
+            } else {
+                entry.target.classList.remove('visible');
             }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.3 });
 
     sections.forEach(section => observer.observe(section));
 
@@ -32,16 +43,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-
-    // Terminal text effect
-    const terminalText = document.querySelector('.terminal-text');
-    if (terminalText) {
-        let text = "⇓⇓⇓SCROLL DOWN TO CONTINUE⇓⇓⇓";
-        let index = 0;
-        const timer = setInterval(() => {
-            terminalText.textContent = text.substring(0, index);
-            index++;
-            if (index > text.length) clearInterval(timer);
-        }, 100);
-    }
 });
