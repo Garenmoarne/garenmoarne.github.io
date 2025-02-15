@@ -6,6 +6,7 @@ body {
     color: #eee;
     font-family: 'Courier New', monospace;
     line-height: 1.6;
+    filter: grayscale(100%); /* Monochromatic Filter */
 }
 
 /* CRT Overlay */
@@ -53,6 +54,7 @@ body {
 .fullscreen-section.active {
     opacity: 1;
     transform: translateY(0);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Glow Effect */
 }
 
 /* Retro Navigation */
@@ -87,4 +89,47 @@ body {
 
 .neon-link.active {
     background: rgba(255, 255, 255, 0.1);
+}
+
+/* Glow Effect */
+.glow {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Unique Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes bounceIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Apply Animations and Glow Effect to Sections */
+#home {
+    animation: fadeIn 2s ease-out;
+}
+
+#about {
+    animation: slideInLeft 2s ease-out;
+}
+
+#projects {
+    animation: slideInRight 2s ease-out;
+}
+
+#contact {
+    animation: bounceIn 2s ease-out;
 }
