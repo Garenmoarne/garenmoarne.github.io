@@ -2,103 +2,124 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>アビサックス</title>
-    
-    <!-- Meta tags for SEO and sharing -->
-    <meta name="description" content="A retro-futuristic creative portfolio website showcasing innovative digital experiences">
-    <meta name="keywords" content="portfolio, creative, digital, retro-futuristic">
-    <meta name="author" content="Garenmoarne">
-    <meta name="theme-color" content="#000000">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="アビサックス - Creative Portfolio">
-    <meta property="og:description" content="A retro-futuristic creative portfolio website">
-    <meta property="og:image" content="path-to-your-social-preview-image.jpg">
-    
-    <!-- Preload critical assets -->
-    <link rel="preload" href="assets/css/style.css" as="style">
-    <link rel="preload" href="assets/css/animations.css" as="style">
-    <link rel="preload" href="assets/js/main.js" as="script">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/animations.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    
-    <!-- Error handling -->
-    <script>
-        window.addEventListener('error', function(e) {
-            console.error('Global error:', e.error);
-        });
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHNDR's Page</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="neural_loading_wrapper" role="progressbar" aria-label="Loading website">
-        <div class="brainfry_loader"></div>
-        <noscript>
-            <p style="color: white;">Please enable JavaScript to view this website.</p>
-        </noscript>
-    </div>
-
-    <!-- CRT Effects -->
-    <div class="scanlines" aria-hidden="true"></div>
-    <div class="grid-bg" aria-hidden="true"></div>
-    
-    <!-- Navigation -->
-    <nav class="cyber_floaty_brain_container" role="navigation" aria-label="Main navigation">
-        <div class="neurolink_nav_wrapper">
-            <a href="#home" class="mind_melt_button active" aria-current="page">/// HOME</a>
-            <a href="#about" class="mind_melt_button">/// ABOUT</a>
-            <a href="#projects" class="mind_melt_button">/// PROJECTS</a>
-            <a href="#contact" class="mind_melt_button">/// CONTACT</a>
-        </div>
+    <nav class="navigation">
+        <ul>
+            <li><a href="#home" class="active">HOME</a></li>
+            <li><a href="#about">ABOUT ME</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#publication">PUBLICATION</a></li>
+        </ul>
     </nav>
 
-    <!-- Main Content -->
-    <main id="main-content">
-        <section id="home" class="psychosis_section neon_mindbreak visible" aria-labelledby="home-title">
-            <div class="content">
-                <h1 id="home-title" class="glitch-text" data-text="ABYSSUXS">ABYSSUXS</h1>
-                <p class="terminal-text" role="status" aria-live="polite">⇓⇓⇓SCROLL DOWN TO CONTINUE⇓⇓⇓</p>
-            </div>
-        </section>
-
-        <section id="about" class="psychosis_section neon_mindbreak" aria-labelledby="about-title">
-            <div class="content">
-                <h2 id="about-title" class="neon-heading">> ABOUT_ME</h2>
-                <div class="retro-box">
-                    <p class="typewriter" role="text">[root@cyber ~]$ whoami<br>
-                    Passionate developer creating retro-futuristic experiences...</p>
+    <main>
+        <section id="home" class="section">
+            <div class="welcome-content">
+                <div class="welcome-text">
+                    <h1>HELLO THERE!</h1>
+                    <h2>WELCOME TO CHNDR'S PAGE</h2>
+                </div>
+                <div class="profile-images">
+                    <img src="img/profile1.jpg" alt="Profile Image 1" class="fade-in profile-img profile-img1">
+                    <img src="img/profile2.jpg" alt="Profile Image 2" class="fade-in profile-img profile-img2">
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="psychosis_section neon_mindbreak" aria-labelledby="projects-title">
-            <div class="content">
-                <h2 id="projects-title" class="neon-heading">> PROJECTS</h2>
-                <div class="retro-box">
-                    <p class="typewriter" role="text">Loading projects...</p>
+        <section id="about" class="section">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="img/profile1.jpg" alt="About Me Image" class="about-img">
+                </div>
+                <div class="about-text">
+                    <h2>ABOUT ME</h2>
+                    <p>Welcome to my creative space. I am a professional focused on the convergence of art and technology.</p>
+                    <p>My work explores the depths of the abyss, challenging perspectives and creating immersive experiences.</p>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="psychosis_section neon_mindbreak" aria-labelledby="contact-title">
-            <div class="content">
-                <h2 id="contact-title" class="neon-heading">> CONTACT</h2>
-                <div class="retro-box">
-                    <p class="typewriter" role="text">Establishing connection...</p>
+        <section id="projects" class="section">
+            <h2>PROJECTS</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <div class="project-image"></div>
+                    <h3>Project Title</h3>
+                    <p>Project description goes here.</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-image"></div>
+                    <h3>Project Title</h3>
+                    <p>Project description goes here.</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-image"></div>
+                    <h3>Project Title</h3>
+                    <p>Project description goes here.</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-image"></div>
+                    <h3>Project Title</h3>
+                    <p>Project description goes here.</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-image"></div>
+                    <h3>Project Title</h3>
+                    <p>Project description goes here.</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-image"></div>
+                    <h3>Project Title</h3>
+                    <p>Project description goes here.</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-image"></div>
+                    <h3>Project Title</h3>
+                    <p>Project description goes here.</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-image"></div>
+                    <h3>Project Title</h3>
+                    <p>Project description goes here.</p>
+                </div>
+                <div class="project-item">
+                    <div class="project-image"></div>
+                    <h3>Project Title</h3>
+                    <p>Project description goes here.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="publication" class="section">
+            <h2>PUBLICATION</h2>
+            <div class="publication-grid">
+                <div class="publication-item">
+                    <div class="publication-image"></div>
+                    <h3>Publication Title</h3>
+                    <p>Publication details and description.</p>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-image"></div>
+                    <h3>Publication Title</h3>
+                    <p>Publication details and description.</p>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-image"></div>
+                    <h3>Publication Title</h3>
+                    <p>Publication details and description.</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Scripts -->
-    <script src="assets/js/main.js" defer></script>
+    <footer>
+        <p>&copy; 2025 CHNDR. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
