@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const mouseX = e.clientX / window.innerWidth;
         const mouseY = e.clientY / window.innerHeight;
         
-        const depth = 20; // Lower = more subtle
+        const depth = 100; // Lower = more subtle
         const moveX = mouseX * depth;
         const moveY = mouseY * depth;
         
