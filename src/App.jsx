@@ -6,7 +6,7 @@ function App() {
   const [displayText, setDisplayText] = useState('')
   const [isTyping, setIsTyping] = useState(true)
 
-  const welcomeText = "Welcome to my terminal portfolio..."
+  const welcomeText = "Welcome dear voyager~"
 
   useEffect(() => {
     let index = 0
@@ -24,12 +24,16 @@ function App() {
   }, [])
 
   const asciiArt = `
-    ██████╗ ███████╗███████╗██╗ ██████╗ ███╗   ██╗███████╗██████╗ 
-    ██╔══██╗██╔════╝██╔════╝██║██╔════╝ ████╗  ██║██╔════╝██╔══██╗
-    ██║  ██║█████╗  ███████╗██║██║  ███╗██╔██╗ ██║█████╗  ██████╔╝
-    ██║  ██║██╔══╝  ╚════██║██║██║   ██║██║╚██╗██║██╔══╝  ██╔══██╗
-    ██████╔╝███████╗███████║██║╚██████╔╝██║ ╚████║███████╗██║  ██║
-    ╚═════╝ ╚══════╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝
+     ________  ___  ___  ________   ________  ________  ________  ________      ___    ___ ________   ________  ___  ___     ___    ___ ________      
+    |\   ____\|\  \|\  \|\   ___  \|\   ___ \|\   __  \|\   __  \|\   __  \    |\  \  /  /|\   ____\ |\   ____\|\  \|\  \   |\  \  /  /|\   ____\     
+    \ \  \___|\ \  \\\  \ \  \\ \  \ \  \_|\ \ \  \|\  \ \  \|\  \ \  \|\ /_   \ \  \/  / | \  \___|_\ \  \___|\ \  \\\  \  \ \  \/  / | \  \___|_    
+     \ \  \    \ \   __  \ \  \\ \  \ \  \ \\ \ \   _  _\ \   __  \ \   __  \   \ \    / / \ \_____  \\ \_____  \ \  \\\  \  \ \    / / \ \_____  \   
+      \ \  \____\ \  \ \  \ \  \\ \  \ \  \_\\ \ \  \\  \\ \  \ \  \ \  \|\  \   \/  /  /   \|____|\  \\|____|\  \ \  \\\  \  /     \/   \|____|\  \  
+       \ \_______\ \__\ \__\ \__\\ \__\ \_______\ \__\\ _\\ \__\ \__\ \_______\__/  / /       ____\_\  \ ____\_\  \ \_______\/  /\   \     ____\_\  \ 
+        \|_______|\|__|\|__|\|__| \|__|\|_______|\|__|\|__|\|__|\|__|\|_______|\___/ /       |\_________\\_________\|_______/__/ /\ __\   |\_________\
+                                                                              \|___|/        \|_________\|_________|        |__|/ \|__|   \|_________|
+                                                                                                                                                  
+                                                                                                                                                  
   `
 
   const portfolioData = {
@@ -38,11 +42,11 @@ function App() {
       content: `
 System Information:
 ==================
-Name: Alex Thompson
-Role: Graphic Designer & Visual Artist
+Name: Chandra D.P.
+Role: Graphic Designer, IT Student
 Status: Available for freelance projects
-Location: San Francisco, CA
-Experience: 5+ years in digital design
+Location: Jawa Barat, Indonesia
+Experience: 2 Months in digital design
 
 Bio:
 ----
@@ -61,18 +65,12 @@ print and digital media.
       content: `
 Design Software:
 ================
-> Adobe Creative Suite     [████████████████████] 95%
-> Figma                    [██████████████████  ] 90%
-> Sketch                   [████████████████    ] 85%
-> Blender                  [██████████████      ] 75%
-> After Effects            [████████████        ] 70%
+> IbisPaint     [████████████████████] 95%
 
-Programming:
+Language
 ============
-> HTML/CSS                 [██████████████████  ] 90%
-> JavaScript               [████████████████    ] 80%
-> React                    [██████████████      ] 75%
-> Python                   [████████████        ] 65%
+> Indonesian                 [██████████████████  ] 90%
+> English                    [████████████████    ] 80%
 
 Specializations:
 ================
@@ -92,40 +90,12 @@ Specializations:
 Project Repository:
 ===================
 
-[01] TechStart Branding
-     ├── Client: TechStart Inc.
-     ├── Type: Complete Brand Identity
-     ├── Tools: Illustrator, Photoshop
-     ├── Year: 2024
-     └── Status: Completed ✓
-
-[02] EcoApp Mobile Interface
-     ├── Client: GreenTech Solutions
-     ├── Type: Mobile App UI/UX
-     ├── Tools: Figma, Principle
-     ├── Year: 2024
-     └── Status: Completed ✓
-
-[03] Artisan Coffee Packaging
-     ├── Client: Mountain Brew Co.
-     ├── Type: Package Design
-     ├── Tools: Illustrator, InDesign
-     ├── Year: 2023
-     └── Status: Completed ✓
-
-[04] Digital Art Exhibition
-     ├── Client: Modern Art Gallery
-     ├── Type: Exhibition Design
-     ├── Tools: After Effects, Photoshop
-     ├── Year: 2023
-     └── Status: Completed ✓
-
-[05] SaaS Dashboard Design
-     ├── Client: DataFlow Analytics
-     ├── Type: Web Application UI
-     ├── Tools: Figma, React
-     ├── Year: 2023
-     └── Status: Completed ✓
+[01] None
+     ├── Client: TBD
+     ├── Type: TBD
+     ├── Tools: TBD
+     ├── Year: TBD
+     └── Status: TBD
       `
     },
     contact: {
@@ -134,18 +104,15 @@ Project Repository:
 Connection Protocols:
 =====================
 
-Email:        alex.thompson@designer.com
-Portfolio:    www.alexthompson.design
-LinkedIn:     /in/alexthompsondesign
-Behance:      /alexthompsondesign
-Instagram:    @alexdesigns
+Email:        abyssuxs@gmail.com
+LinkedIn:     /in/chandradwipurwanto/
+Instagram:    @chndrabyssuxs
 
 Availability:
 =============
 Status:       ONLINE
 Response:     < 24 hours
-Timezone:     PST (UTC-8)
-Rate:         $75-150/hour
+Timezone:     WIB (UTC+7)
 
 Services Available:
 ===================
