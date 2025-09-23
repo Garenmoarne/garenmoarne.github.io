@@ -60,7 +60,7 @@ print and digital media.
       content: `
 Design Software:
 ================
-> IbisPaint     [████████████████████] 95%
+> IbisPaint                  [████████████████████] 95%
 
 Language
 ============
