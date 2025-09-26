@@ -1,1 +1,2 @@
-# garenmoarne.github.io
+# Pages
+yes
